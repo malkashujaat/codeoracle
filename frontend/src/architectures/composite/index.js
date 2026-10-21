@@ -1,0 +1,2 @@
+export class ComponentNode { constructor(name, data = {}) { this.name = name; this.data = data; this.children = []; } add(child) { this.children.push(child); return this; } find(name) { if (this.name === name) return this; for (const child of this.children) { const found = child.find(name); if (found) return found; } return null; } getLeaves() { if (this.children.length === 0) return [this]; return this.children.flatMap(c => c.getLeaves()); } }
+export default ComponentNode;
